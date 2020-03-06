@@ -85,9 +85,10 @@ class Router
     if ($this->match($url)) {
       $controller = $this->params['controller'];
       $controller = $this->convertToStudlyCaps($controller);
+      $controller = "App\Controllers\\$controller"; // controller class is in a different namespace, call it with a backslash
 
       if (class_exists($controller)) {
-        $controller_object = "App\Controllers\\$controller"; // controller class is in a different namespace, call it with a backslash
+        $controller_object = new $controller($this->params);
         $action = $this->params['action'];
         $action = $this->convertToCamelCase($action);
 

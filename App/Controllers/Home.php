@@ -1,7 +1,7 @@
 <?php
 namespace App\Controllers;
 
-class Home {
+class Home extends \Core\Controller {
   public function index() {
     echo 'Hello its index from the home controller';
   }

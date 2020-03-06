@@ -6,7 +6,7 @@ namespace App\Controllers;
  * 
  * @return void
  */
-class Posts
+class Posts extends \Core\Controller
 {
   public function index()
   {
