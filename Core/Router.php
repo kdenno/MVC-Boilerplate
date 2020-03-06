@@ -1,4 +1,7 @@
 <?php
+
+namespace Core;
+
 class Router
 {
   // create a routing table
@@ -83,7 +86,7 @@ class Router
       $controller = $this->convertToStudlyCaps($controller);
 
       if (class_exists($controller)) {
-        $controller_object = new $controller;
+        $controller_object = "App\Controllers\\$controller"; // controller class is in a different namespace, call it with a backslash
         $action = $this->params['action'];
         $action = $this->convertToCamelCase($action);
 
