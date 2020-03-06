@@ -1,5 +1,6 @@
 <?php
 require 'Core/Router.php';
+require 'Controllers/Posts.php';
 $router = new Router();
 $router->add('', array('controller' => 'Home', 'action' => 'index'));
 $router->add('posts', array('controller' => 'Posts', 'action' => 'index'));
@@ -7,6 +8,5 @@ $router->add('posts', array('controller' => 'Posts', 'action' => 'index'));
 $router->add('{controller}/{action}');
 $router->add('admin/{action}/{controller}');
 $router->add('{controller}/{id:\d+}/{action}');
-echo '<pre>';
-echo htmlspecialchars(print_r($router->getRoutes(), true));
-echo '</pre>';
+
+$router->dispatch($_SERVER['QUERY_STRING']);
