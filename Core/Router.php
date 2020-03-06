@@ -99,11 +99,27 @@ class Router
       echo 'No route matched';
     }
   }
+
+  /**
+   * convert a string with hyphens to studlycaps
+   * e.g post-authors=> PostAuthors
+   * 
+   * @param  $string the string to convert
+   * @return string
+   */
   protected function convertToStudlyCaps($string)
   {
     return str_replace(' ', '', ucwords(str_replace('-', '', $string)));
   }
-  public function convertToCamelCase($string)
+
+  /**
+   * convert a string with hyphens to camelcase
+   * e.g add-new=> addNew
+   * 
+   * @param  $string the string to convert
+   * @return string
+   */
+  protected function convertToCamelCase($string)
   {
     return lcfirst($this->convertToStudlyCaps($string));
   }
