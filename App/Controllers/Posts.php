@@ -8,7 +8,7 @@ namespace App\Controllers;
  */
 class Posts extends \Core\Controller
 {
-  public function index()
+  public function indexAction()
   {
     echo 'Hello from home page';
   }
@@ -18,7 +18,7 @@ class Posts extends \Core\Controller
    *
    * @return void
    */
-  public function addNew()
+  public function addNewAction()
   {
     echo 'Hello from the add new action in the posts controller';
   }
