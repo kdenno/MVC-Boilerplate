@@ -92,10 +92,10 @@ class Router
         $action = $this->params['action'];
         $action = $this->convertToCamelCase($action);
 
-        if (is_callable($controller_object, $action)) {
+        if (preg_match('/Action$/i', $action) == 0) { // stop user from accessing resource directly
           $controller_object->$action();
         } else {
-          echo "Method $action (in controller $controller) not found ";
+          throw new \Exception("Method $action in controller $controller cannot be called directly - remove the Action suffix to call this method");
         }
       } else {
         echo "Controller classs $controller not found";
