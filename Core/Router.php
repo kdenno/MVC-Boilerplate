@@ -85,7 +85,8 @@ class Router
     if ($this->match($url)) {
       $controller = $this->params['controller'];
       $controller = $this->convertToStudlyCaps($controller);
-      $controller = "App\Controllers\\$controller"; // controller class is in a different namespace, call it with a backslash
+     // $controller = "App\Controllers\\$controller"; // controller class is in a different namespace, call it with a backslash
+     $controller = $this->getNamesapce().$controller;
 
       if (class_exists($controller)) {
         $controller_object = new $controller($this->params);
@@ -149,5 +150,14 @@ class Router
   protected function convertToCamelCase($string)
   {
     return lcfirst($this->convertToStudlyCaps($string));
+  }
+  protected function getNamesapce()
+  {
+    $namespace = 'App\Controllers\\';
+    if (array_key_exists('namespace', $this->params)) {
+      // if parameter namespace has been passed in, add it to the already defined namespace
+      $namespace .= $this->params['namespace'] . '\\';
+    }
+    return $namespace;
   }
 }
