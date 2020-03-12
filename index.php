@@ -1,12 +1,5 @@
 <?php
-spl_autoload_register(function ($class) {
-  $root = dirname(__DIR__); // get parent directory
-  // convert namespaced class name into a directory
-  $file = $root . '/' . str_replace('\\', '/', $class) . '.php';
-  if (is_readable($file)) {
-    require $root . '/' . str_replace('\\', '/', $class) . '.php';
-  }
-});
+require "./vendor/autoload.php";
 
 $router = new Core\Router();
 $router->add('', array('controller' => 'Home', 'action' => 'index'));

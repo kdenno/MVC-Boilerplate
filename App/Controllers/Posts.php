@@ -1,5 +1,6 @@
 <?php
 namespace App\Controllers;
+use \Core\View;
 
 /**
  * display posts
@@ -10,7 +11,7 @@ class Posts extends \Core\Controller
 {
   public function indexAction()
   {
-    echo 'Hello from home page';
+    View::renderTemplate('Posts/index.html');
   }
 
   /**
@@ -23,5 +24,3 @@ class Posts extends \Core\Controller
     echo 'Hello from the add new action in the posts controller';
   }
 }
-
-?>
